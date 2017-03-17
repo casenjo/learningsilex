@@ -41,6 +41,9 @@ $app->post('/basicpost', function (Request $request) use ($app) {
 // 2nd parameter defines a new instance of a controller provider class to use with the route
 $app->mount('/controllers/example', new LearningSilex\Controllers\ExampleControllerProvider);
 
+// Eloquent ORM example:
+$app->mount('/controllers/user', new LearningSilex\Controllers\UserControllerProvider);
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
