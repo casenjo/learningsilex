@@ -1,0 +1,20 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <p>Basic POST</p>
+    <p>
+        <form method="post">
+            First name:<br>
+                <input type="text" name="firstName" value="">
+            <br>
+            Last name:<br>
+                <input type="text" name="lastName" value="">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </p>
+    {% if firstName is defined and lastName is defined %}
+        <p>First name was: {{ firstName }}</p>
+        <p>Last name was: {{ lastName }}</p>
+    {% endif %}
+{% endblock %}

@@ -25,6 +25,17 @@ $app->get('/getwithparams/{firstValue}/{secondValue}', function ($firstValue, $s
 })
 ->bind('getwithparams');
 
+// Basic POST example
+$app->get('/basicpost', function () use ($app) {
+    return $app['twig']->render('basicpost.html.twig', array());
+})
+->bind('basicpost');
+$app->post('/basicpost', function (Request $request) use ($app) {
+    $firstName = $request->get('firstName');
+    $lastName = $request->get('lastName');
+    return $app['twig']->render('basicpost.html.twig', array('firstName' => $firstName, 'lastName' => $lastName));
+});
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
