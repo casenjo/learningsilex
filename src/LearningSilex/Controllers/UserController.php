@@ -12,4 +12,9 @@ class UserController
         $u = User::find(1);
         return $app['twig']->render('user/usercontroller.html.twig', array('user' => $u));
     }
+
+    public function create(Application $app)
+    {
+        return $app['twig']->render('user/create.html.twig', array());
+    }
 }
