@@ -19,10 +19,11 @@ $app->get('/basicget', function () use ($app) {
 })
 ->bind('basicget');
 
-$app->get('/basicget', function () use ($app) {
-    return $app['twig']->render('basicget.html.twig', array());
+// Basic GET example with parameters in the URL
+$app->get('/getwithparams/{firstValue}/{secondValue}', function ($firstValue, $secondValue) use ($app) {
+    return $app['twig']->render('getwithparams.html.twig', array('firstValue' => $firstValue, 'secondValue' => $secondValue));
 })
-->bind('basicget');
+->bind('getwithparams');
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
