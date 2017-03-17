@@ -13,6 +13,12 @@ $app->get('/', function () use ($app) {
 })
 ->bind('homepage');
 
+// Basic GET example with new Twig template
+$app->get('/basicget', function () use ($app) {
+    return $app['twig']->render('basicget.html.twig', array());
+})
+->bind('basicget');
+
 $app->get('/basicget', function () use ($app) {
     return $app['twig']->render('basicget.html.twig', array());
 })
