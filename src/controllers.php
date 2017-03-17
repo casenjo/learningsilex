@@ -36,6 +36,11 @@ $app->post('/basicpost', function (Request $request) use ($app) {
     return $app['twig']->render('basicpost.html.twig', array('firstName' => $firstName, 'lastName' => $lastName));
 });
 
+// Controller example:
+// 1st parameter defines the prefix that will be added to the controller's routes
+// 2nd parameter defines a new instance of a controller provider class to use with the route
+$app->mount('/controllers/example', new LearningSilex\Controllers\ExampleControllerProvider);
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;
