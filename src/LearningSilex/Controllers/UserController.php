@@ -9,12 +9,21 @@ class UserController
 {
     public function index(Request $request, Application $app)
     {
-        $u = User::find(1);
-        return $app['twig']->render('user/usercontroller.html.twig', array('user' => $u));
+        $users = User::all();
+        return $app['twig']->render('user/usercontroller.html.twig', array('users' => $users));
     }
 
     public function create(Application $app)
     {
         return $app['twig']->render('user/create.html.twig', array());
+    }
+
+    public function store(Request $request, Application $app)
+    {
+        $u = new User;
+        $u->first_name = $request->get('firstName');
+        $u->last_name = $request->get('lastName');
+        $u->save();
+        return $app->redirect('/index_dev.php/controllers/user');
     }
 }

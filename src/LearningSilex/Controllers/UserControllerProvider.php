@@ -14,6 +14,7 @@ class UserControllerProvider implements ControllerProviderInterface
         $controllers->get('/', 'LearningSilex\Controllers\UserController::index');
 
         $controllers->get('/create', 'LearningSilex\Controllers\UserController::create');
+        $controllers->post('/create', 'LearningSilex\Controllers\UserController::store');
 
         return $controllers;
     }
